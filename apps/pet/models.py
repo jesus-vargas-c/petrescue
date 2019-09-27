@@ -7,6 +7,9 @@ class Vaccine(models.Model):
     name = models.CharField(max_length=25)
     expiration_date = models.DateField()
 
+    def __str__(self):
+        return '{}'.format(self.name)
+
 
 class Pet(models.Model):
     name = models.CharField(max_length=50)
@@ -15,6 +18,9 @@ class Pet(models.Model):
     rescue_date = models.DateField()
     person = models.ForeignKey(Person, null=True, blank=True, on_delete=models.CASCADE)
     vaccine = models.ManyToManyField(Vaccine, blank=True)
+
+    def __str__(self):
+        return '{}'.format(self.name)
 
 
 

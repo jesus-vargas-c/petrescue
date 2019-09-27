@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% block content %}
+<table class="table table-bordered">
+<thead>
+    <tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>Sex</td>
+        <td>Age</td>
+        <td>Date Rescued</td>
+        <td>Owner pretend</td>
+        <td>Action</td>
+    </tr>
+</thead>
+<tbody>
+    {% if pets  %}
+    {% for pet in pets  %}
+
+    <tr>
+        <td>{{ pet.id  }}</td>
+        <td>{{ pet.name }}</td>
+        <td>{{ pet.sexpet }}</td>
+        <td>{{ pet.age }}</td>
+        <td>{{ pet.rescue_date }}</td>
+        <td>{{ pet.person.name }} {{ pet.person.last_name }}</td>
+        <td>
+            <a class="btn btn-primary" href="{% url 'pet:pet_edit' pet.id  %}">Edit</a> 
+            <a class="btn btn-danger" href="{% url 'pet:pet_delete' pet.id  %}">Delete</a>
+        </td>
+        
+
+        
+    </tr>
+    {% endfor %}
+    {% else %}
+       <h1>There is no records about pets</h1>
+     {% endif %}
+</tbody>
+</table>
+{% endblock %}
